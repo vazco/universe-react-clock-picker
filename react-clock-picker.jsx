@@ -7,6 +7,10 @@
 /* global React */
 /* global ReactDOM */
 
+if (typeof module === 'object' && module.exports) {
+    var React = require('react');
+}
+
 const TimePicker = React.createClass({
     getDefaultProps () {
         return {
@@ -369,4 +373,8 @@ if(typeof System !== 'undefined'){
     System.set(System.normalizeSync('{universe:react-clock-picker}'), System.newModule({ TimePicker, default: TimePicker }));
 }
 
-_TimePicker = TimePicker;
+if (typeof module === 'object' && module.exports) {
+    module.exports = TimePicker;
+} else {
+    _TimePicker = TimePicker;
+}
